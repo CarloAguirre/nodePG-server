@@ -13,8 +13,7 @@ const crearUsuario = async (email, password, rol, nombre) => {
 const buscarUsuarioPorEmail = async (email) => {
     const consulta = "SELECT * FROM usuarios WHERE email = $1";
     const values = [email];
-    const { rows, rowCount } = await pool.query(consulta, values);
-    if (!rowCount) throw { code: 404, msg: "No se encontró ningún usuario con este email" };
+    const { rows } = await pool.query(consulta, values);
     return rows[0];
 };
 
