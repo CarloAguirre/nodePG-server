@@ -22,10 +22,15 @@ const verificarCredenciales = async (email, password) => {
     const values = [email]
     const consulta = "SELECT * FROM usuarios WHERE email = $1"
     const { rows: [usuario], rowCount } = await pool.query(consulta, values)
-    const { password: hashedPassword } = usuario
-    const passwordEsCorrecta = bcrypt.compareSync(password, hashedPassword)
-    if (!passwordEsCorrecta || !rowCount)
-    throw { code: 401, message: "Email o contraseña incorrecta" }
+    if (!usuario){
+        throw { code: 401, message: "Email incorrecto" }
+    }else{     
+        const { password: hashedPassword } = usuario
+        const passwordEsCorrecta = bcrypt.compareSync(password, hashedPassword)
+        if (!passwordEsCorrecta || !rowCount)
+        throw { code: 401, message: "Contraseña incorrecta" }
+        return usuario;
+    }
 }
 
 export{
