@@ -7,7 +7,7 @@ const crearUsuario = async (email, password, rol, nombre) => {
     const hashedPassword = bcrypt.hashSync(password, salt);
     const values = [email, hashedPassword, rol, nombre];
     const consulta = "INSERT INTO usuarios (email, password, rol, nombre) VALUES ($1, $2, $3, $4)";
-    const insercion = await pool.query(consulta, values);
+    await pool.query(consulta, values);
 };
 
 const buscarUsuarioPorEmail = async (email) => {
@@ -40,6 +40,14 @@ const buscarProductos = async()=>{
     return rows
 }
 
+const productoPorId = async(id)=>{
+    const values = [id]
+    const consulta = "SELECT * FROM productos WHERE id = $1"
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: `No se encontró ningún producto con id ${id}` };
+    return rows
+}
+
 const nuevoProducto = async(id_usuario, id_categoria, nombre, precio, descripcion, img1, img2)=>{
     const values = [id_usuario, id_categoria, nombre, precio, descripcion, img1, img2]
     const consulta = "INSERT INTO productos (id_usuario, id_categoria, nombre, precio, descripcion, img1, img2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
@@ -53,5 +61,6 @@ export{
     buscarUsuarioPorEmail,
     verificarCredenciales,
     buscarProductos,
-    nuevoProducto
+    nuevoProducto,
+    productoPorId
 }
