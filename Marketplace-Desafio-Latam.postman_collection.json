@@ -1,0 +1,502 @@
+{
+	"info": {
+		"_postman_id": "87115f7f-8144-4f8a-b33b-85821c554b5f",
+		"name": "Proyecto Marketplace Desafio Latam",
+		"description": "Diseño de contrato de datos de API REST que se utilizara como servidor para aplicacion web desarrollada en React.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22825210"
+	},
+	"item": [
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"user5\",\r\n    \"password\": \"123456\",\r\n    \"correo\": \"test5@etester.com\",\r\n    \"rol\": \"USER_ROLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/usuarios/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"usuarios",
+						""
+					],
+					"query": [
+						{
+							"key": "proximity",
+							"value": "ip",
+							"disabled": true
+						},
+						{
+							"key": "types",
+							"value": "place%2Cpostcode%2Caddress",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTQzMGQ5YzFiYWJhZmIxZDZjYTAiLCJpYXQiOjE2NjQ5ODEzOTEsImV4cCI6MTY2NDk5NTc5MX0.dsfdfjS98Y6vBVX-xggSlI-p-j2cg_wMWVcTpunVRUk-8f68",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/usuarios/633493c9d9c1babafb1d6c7e",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"usuarios",
+						"633493c9d9c1babafb1d6c7e"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDY5NDZhZjU3ZjgyZWI4OTVmMWYzZjMiLCJpYXQiOjE2ODQ5NDI1OTYsImV4cCI6MTY4NDk1Njk5Nn0.CkQz2G7_aRsMGKq-cLaji50R0JUGLwLyVFR4Ndw-TNQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"123456\",\r\n    \"correo\": \"carlo_aguirre@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/auth/login",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "proximity",
+							"value": "ip",
+							"disabled": true
+						},
+						{
+							"key": "types",
+							"value": "place%2Cpostcode%2Caddress",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/categorias?limite=1000",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categorias"
+					],
+					"query": [
+						{
+							"key": "limite",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener categoria por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/categorias/6341e2381a3fb2d4e2251ce2",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categorias",
+						"6341e2381a3fb2d4e2251ce2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear categoria",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDY5NDZhZjU3ZjgyZWI4OTVmMWYzZjMiLCJpYXQiOjE2ODQ5NDI1OTYsImV4cCI6MTY4NDk1Njk5Nn0.CkQz2G7_aRsMGKq-cLaji50R0JUGLwLyVFR4Ndw-TNQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"SEGA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/categorias/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categorias",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar categoria por id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTNjOWQ5YzFiYWJhZmIxZDZjN2UiLCJpYXQiOjE2NjUzNDI5MzUsImV4cCI6MTY2NTM1NzMzNX0.FJVkwSKHsUH1iKT1LPg6-NnH6ylaVSVurs08hWvF_KU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}api/categorias/63ab08dca55b459e6c5d376a",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"categorias",
+						"63ab08dca55b459e6c5d376a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear producto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzhiODFlYTA1YzhhYWIxM2M5ODIyNDciLCJpYXQiOjE2NzAxMDIwNzIsImV4cCI6MTY3MDExNjQ3Mn0.nCTQBRdQmr2mGiKwlBJPG69De3FWjCnLBqpJMd99PWY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"DreamCast\",\r\n    \"categoria\": \"SEGA\",\r\n    \"descripcion\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n    \"precio\": \"79990\",\r\n    \"img1\": \"\",\r\n    \"img2\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/productos/",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTNjOWQ5YzFiYWJhZmIxZDZjN2UiLCJpYXQiOjE2NjU2OTY2NjYsImV4cCI6MTY2NTcxMTA2Nn0.pYALayEEBEMGW8VNR2valEAJsWPN5Lps-CaPkggzSZU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/productos?limite=1000&desde=0",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos"
+					],
+					"query": [
+						{
+							"key": "limite",
+							"value": "1000"
+						},
+						{
+							"key": "desde",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener producto por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTNjOWQ5YzFiYWJhZmIxZDZjN2UiLCJpYXQiOjE2NjU2OTY2NjYsImV4cCI6MTY2NTcxMTA2Nn0.pYALayEEBEMGW8VNR2valEAJsWPN5Lps-CaPkggzSZU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/productos/638237b22413fb2751437123",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos",
+						"638237b22413fb2751437123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener productos por categoria(id)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/productos/categoria/63488753cf489b14f0e4c8e1",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos",
+						"categoria",
+						"63488753cf489b14f0e4c8e1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar producto por id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTNjOWQ5YzFiYWJhZmIxZDZjN2UiLCJpYXQiOjE2NjU2OTY2NjYsImV4cCI6MTY2NTcxMTA2Nn0.pYALayEEBEMGW8VNR2valEAJsWPN5Lps-CaPkggzSZU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"SNES\",\r\n    \"categoria\": \"NINTENDO\",\r\n    \"precio\": \"43000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/productos/63488fadc5710ca7e553376c",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos",
+						"63488fadc5710ca7e553376c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar producto por id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTM4ZmQ5YzFiYWJhZmIxZDZjNzgiLCJpYXQiOjE2Njk4MjU1MzEsImV4cCI6MTY2OTgzOTkzMX0.RsOepNLvtXJ8fYXU6xaGhCbEe20kDqa12v4jicX6XEw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/productos/638237b22413fb2751437123",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"productos",
+						"638237b22413fb2751437123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cargar imagen producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/carlo/Desktop/buenaaventura/fer_perfil/fer.1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads/productos/638366382e06dfdd69916216",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads",
+						"productos",
+						"638366382e06dfdd69916216"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener archivo/imagen producto",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}api/uploads/productos/63769cc2dd3979a0332e1a27",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"uploads",
+						"productos",
+						"63769cc2dd3979a0332e1a27"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,8 +1,9 @@
 
 import { response } from "express";
-import { buscarUsuarioPorEmail, crearUsuario } from "../models/db.js";
+import { buscarUsuarioPorEmail, crearUsuario } from "../helpers/dbHelpers.js";
 
-const postUsuario = async(req, res = response) => {
+
+const postUsuario = async(req, res = response) =>{
     try {
       const { email, password, rol, nombre } = req.body;
       await crearUsuario(email, password, rol, nombre);
@@ -17,6 +18,8 @@ const postUsuario = async(req, res = response) => {
     }
   }
 
+
+
   export{
-    postUsuario
+    postUsuario,
   }

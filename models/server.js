@@ -2,25 +2,24 @@ import express from "express";
 import cors from "cors";
 import { router as productos } from "../routes/productos.js";
 import { router as usuarios } from "../routes/usuarios.js";
-
-
+import { router as auth } from "../routes/auth-login.js";
 
 class Server {
-
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
 
         this.productosPath = '/api/productos'
         this.usuariosPath  = '/api/usuarios'
+        this.authPath  = '/api/auth'
 
         this.middlewares();
         this.routes();
     }
 
     middlewares(){
-        this.app.use(cors())
         this.app.use(express.json())
+        this.app.use(cors())
     }
 
     listen(){
@@ -32,6 +31,7 @@ class Server {
     routes(){
         this.app.use(this.productosPath, productos)
         this.app.use(this.usuariosPath, usuarios)
+        this.app.use(this.authPath, auth)
     }
     
 }
