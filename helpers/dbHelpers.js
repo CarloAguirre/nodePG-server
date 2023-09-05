@@ -14,7 +14,7 @@ const buscarUsuarioPorEmail = async (email) => {
     const consulta = "SELECT * FROM usuarios WHERE email = $1";
     const values = [email];
     const { rows, rowCount } = await pool.query(consulta, values);
-    if (!rowCount) throw { code: 404, message: "No se encontró ningún usuario con este email" };
+    if (!rowCount) throw { code: 404, msg: "No se encontró ningún usuario con este email" };
     return rows[0];
 };
 
@@ -23,18 +23,35 @@ const verificarCredenciales = async (email, password) => {
     const consulta = "SELECT * FROM usuarios WHERE email = $1"
     const { rows: [usuario], rowCount } = await pool.query(consulta, values)
     if (!usuario){
-        throw { code: 401, message: "Email incorrecto" }
+        throw { code: 401, msg: "Email incorrecto" }
     }else{     
         const { password: hashedPassword } = usuario
         const passwordEsCorrecta = bcrypt.compareSync(password, hashedPassword)
         if (!passwordEsCorrecta || !rowCount)
-        throw { code: 401, message: "Contraseña incorrecta" }
+        throw { code: 401, msg: "Contraseña incorrecta" }
         return usuario;
     }
+}
+
+const buscarProductos = async()=>{
+    const consulta = "SELECT * FROM productos"
+    const { rows, rowCount } = await pool.query(consulta);
+    if (!rowCount) throw { code: 404, msg: "No se encontró ningún producto" };
+    return rows
+}
+
+const nuevoProducto = async(id_usuario, id_categoria, nombre, precio, descripcion, img1, img2)=>{
+    const values = [id_usuario, id_categoria, nombre, precio, descripcion, img1, img2]
+    const consulta = "INSERT INTO productos (id_usuario, id_categoria, nombre, precio, descripcion, img1, img2) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: "No se pudo crear el producto" };
+    return rows[0]
 }
 
 export{
     crearUsuario,
     buscarUsuarioPorEmail,
-    verificarCredenciales
+    verificarCredenciales,
+    buscarProductos,
+    nuevoProducto
 }
