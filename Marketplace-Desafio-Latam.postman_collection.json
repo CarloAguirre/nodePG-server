@@ -11,10 +11,17 @@
 			"name": "crear usuario",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Au",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzM0OTNjOWQ5YzFiYWJhZmIxZDZjN2UiLCJpYXQiOjE2NjU2OTY2NjYsImV4cCI6MTY2NTcxMTA2Nn0.pYALayEEBEMGW8VNR2valEAJsWPN5Lps-CaPkggzSZU",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"user5\",\r\n    \"password\": \"123456\",\r\n    \"correo\": \"test5@etester.com\",\r\n    \"rol\": \"USER_ROLE\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"user5\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"test5@etester.com\",\r\n    \"rol\": \"USER_ROLE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +106,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"password\": \"123456\",\r\n    \"correo\": \"carlo_aguirre@hotmail.com\"\r\n}",
+					"raw": "{\r\n    \"password\": \"123456\",\r\n    \"email\": \"test5@etester.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,13 +259,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MzhiODFlYTA1YzhhYWIxM2M5ODIyNDciLCJpYXQiOjE2NzAxMDIwNzIsImV4cCI6MTY3MDExNjQ3Mn0.nCTQBRdQmr2mGiKwlBJPG69De3FWjCnLBqpJMd99PWY",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3Q1QGV0ZXN0ZXIuY29tb3MiLCJpYXQiOjE2OTQwMjkwMzF9.8VH04aCunXqAHBBjj57JpyJPwetKPCP6F5-IrVIL_BA",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"DreamCast\",\r\n    \"categoria\": \"SEGA\",\r\n    \"descripcion\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n    \"precio\": \"79990\",\r\n    \"img1\": \"\",\r\n    \"img2\": \"\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"DreamCast\",\r\n    \"descripcion\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n    \"precio\": \"79990\",\r\n    \"img1\": \"erfrf\",\r\n    \"img2\": \"frfefe\",\r\n    \"id_categoria\": \"2342343\",\r\n    \"id_usuario\": \"3234234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
