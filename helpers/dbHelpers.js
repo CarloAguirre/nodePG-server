@@ -55,11 +55,19 @@ const nuevoProducto = async(id_usuario, id_categoria, nombre, precio, descripcio
     return rows[0]
 }
 
+const borrarProducto = async(id)=>{
+    const values = [id]
+    const consulta = "DELETE FROM productos WHERE id = $1"
+    const { rows, rowCount } = await pool.query(consulta, values);
+    return rows
+}
+
 export{
     crearUsuario,
     buscarUsuarioPorEmail,
     verificarCredenciales,
     buscarProductos,
     nuevoProducto,
-    productoPorId
+    productoPorId,
+    borrarProducto
 }

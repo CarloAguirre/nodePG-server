@@ -6,6 +6,4 @@ const router = Router()
 
 router.post("/", [existeMail], postUsuario);
 
-
-
 export{router}

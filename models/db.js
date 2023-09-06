@@ -4,7 +4,7 @@ const { Pool } = pkg;
 const pool = new Pool({
  host: 'localhost',
  user: 'postgres',
- password: '$Ony3434', 
+ password: '',  // RECUERDA PONER TU CLAVE DE POSTGRES
  database: 'marketplace',
  allowExitOnIdle: true
 })
