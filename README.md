@@ -1,0 +1,1 @@
+La aplicacion arranca con `npm run dev` o con `nodemon app`.
