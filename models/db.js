@@ -11,8 +11,13 @@ const pool = new Pool({
  user: 'carlo',
  password: 'zHrtUcw4o5IlpcHM4nvb892XIsHZvkkg',  
  database: 'marketplace_f0gh',
- allowExitOnIdle: true
-})
+ allowExitOnIdle: true,
+ ssl: true,
+ max: 20, // set pool max size to 20
+ idleTimeoutMillis: 1000, // close idle clients after 1 second
+ connectionTimeoutMillis: 1000, // return an error after 1 second if connection could not be established
+ maxUses: 7500, 
+  })
 
 // const pool = new Pool({
 //   host: 'localhost',
