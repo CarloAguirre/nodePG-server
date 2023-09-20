@@ -10,13 +10,9 @@ const pool = new Pool({
  host: 'dpg-cjvpkoh5mpss73adov4g-a.oregon-postgres.render.com',
  user: 'carlo',
  password: 'zHrtUcw4o5IlpcHM4nvb892XIsHZvkkg',  
- database: 'marketplace_f0gh',
+ database: 'marketplace',
  allowExitOnIdle: true,
  ssl: true,
- max: 20, // set pool max size to 20
- idleTimeoutMillis: 1000, // close idle clients after 1 second
- connectionTimeoutMillis: 1000, // return an error after 1 second if connection could not be established
- maxUses: 7500, 
   })
 
 // const pool = new Pool({
