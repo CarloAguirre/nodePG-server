@@ -3,6 +3,7 @@ import cors from "cors";
 import { router as productos } from "../routes/productos.js";
 import { router as usuarios } from "../routes/usuarios.js";
 import { router as auth } from "../routes/auth-login.js";
+import { router as categorias } from "../routes/categorias.js";
 
 class Server {
     constructor(){
@@ -12,6 +13,7 @@ class Server {
         this.productosPath = '/api/productos'
         this.usuariosPath  = '/api/usuarios'
         this.authPath  = '/api/auth'
+        this.categoriasPath  = '/api/categorias'
 
         this.middlewares();
         this.routes();
@@ -32,6 +34,7 @@ class Server {
         this.app.use(this.productosPath, productos)
         this.app.use(this.usuariosPath, usuarios)
         this.app.use(this.authPath, auth)
+        this.app.use(this.categoriasPath, categorias)
     }
     
 }

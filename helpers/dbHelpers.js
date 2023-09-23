@@ -62,6 +62,29 @@ const borrarProducto = async(id)=>{
     return rows
 }
 
+const buscarCategorias = async()=>{
+    const consulta = "SELECT * FROM categorias"
+    const { rows, rowCount } = await pool.query(consulta);
+    if (!rowCount) throw { code: 404, msg: "No se encontró ningúna categoria" };
+    return rows
+}
+
+const nuevaCategoria = async(nombre)=>{
+    const values = [nombre]
+    const consulta = "INSERT INTO categorias (nombre) VALUES ($1) RETURNING *";
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: "No se pudo crear la categoría" };
+    return rows[0]
+}
+
+const categoriaPorId = async(id)=>{
+    const values = [id]
+    const consulta = "SELECT * FROM categorias WHERE id = $1"
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: `No se encontró ningúns categoría con id ${id}` };
+    return rows
+}
+
 export{
     crearUsuario,
     buscarUsuarioPorEmail,
@@ -69,5 +92,8 @@ export{
     buscarProductos,
     nuevoProducto,
     productoPorId,
-    borrarProducto
+    borrarProducto,
+    buscarCategorias,
+    nuevaCategoria,
+    categoriaPorId
 }
