@@ -1,6 +1,6 @@
 
 import { response } from "express"
-import { buscarCategorias, categoriaPorId, nuevaCategoria } from "../helpers/dbHelpers.js";
+import { buscarCategorias, categoriaPorNombre, nuevaCategoria } from "../helpers/dbHelpers.js";
 
 const getCategorias = async(req, res = response)=>{
     try {
@@ -16,8 +16,8 @@ const getCategorias = async(req, res = response)=>{
 
 const getCategoria = async(req, res = response)=>{
     try {
-        const {id} = req.params;
-        const categoria = await categoriaPorId(id)
+        const {nombre} = req.params;
+        const categoria = await categoriaPorNombre(nombre)
         res.status(200).json({
                 categoria
         })

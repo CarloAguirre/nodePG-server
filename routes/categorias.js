@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', getCategorias)
 
-router.get('/:id', getCategoria)
+router.get('/:nombre', getCategoria)
 
 router.post('/', [validarToken], postCategoria)
 
