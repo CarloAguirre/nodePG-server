@@ -1,9 +1,8 @@
 
 import { response } from "express"
-import { buscarFavoritos, categoriaPorNombre, nuevaCategoria } from "../helpers/dbHelpers.js";
+import { buscarFavoritos, nuevoFavorito } from "../helpers/dbHelpers.js";
 
 const getFavoritos = async(req, res = response)=>{
-    console.log('estoy aca')
     try {
        const favoritos = await buscarFavoritos()
        res.status(200).json({
@@ -18,9 +17,10 @@ const getFavoritos = async(req, res = response)=>{
 const postFavorito = async(req, res = response)=>{
     try {
         const {id_usuario, id_producto} = req.body
-        const categoria = await nuevoFavorito(id_usuario, id_producto)
+        console.log(id_producto)
+        const favorito = await nuevoFavorito(id_usuario, id_producto)
         res.status(201).json({
-            categoria
+            favorito
         })
     } catch (error) {
         console.log(error);
