@@ -85,6 +85,21 @@ const categoriaPorNombre = async(nombre)=>{
     return rows
 }
 
+const buscarFavoritos = async()=>{
+    const consulta = "SELECT * FROM favoritos"
+    const { rows, rowCount } = await pool.query(consulta);
+    if (!rowCount) throw { code: 404, msg: "No se encontró ningún favorito" };
+    return rows
+}
+
+const nuevoFavorito = async(id_usuario, id_producto)=>{
+    const values = [id_usuario, id_producto]
+    const consulta = "INSERT INTO categorias (id_usuario, id_producto) VALUES ($1, $2) RETURNING *";
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: "No se pudo crear el favorito" };
+    return rows[0]
+}
+
 export{
     crearUsuario,
     buscarUsuarioPorEmail,
@@ -95,5 +110,7 @@ export{
     borrarProducto,
     buscarCategorias,
     nuevaCategoria,
-    categoriaPorNombre
+    categoriaPorNombre,
+    buscarFavoritos,
+    nuevoFavorito
 }
