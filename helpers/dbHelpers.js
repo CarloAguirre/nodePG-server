@@ -93,8 +93,6 @@ const buscarFavoritos = async()=>{
 }
 
 const nuevoFavorito = async(id_usuario, id_producto)=>{
-    console.log(id_usuario)
-    console.log(id_producto)
     const values = [id_usuario, id_producto]
     const consulta = "INSERT INTO favoritos (id_usuario, id_producto) VALUES ($1, $2) RETURNING *";
     const { rows, rowCount } = await pool.query(consulta, values);
