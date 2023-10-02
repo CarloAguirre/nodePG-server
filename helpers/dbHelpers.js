@@ -100,6 +100,14 @@ const nuevoFavorito = async(id_usuario, id_producto)=>{
     return rows[0]
 }
 
+const cargarImagenesProducto = async(id, img1, img2)=>{
+    const values = [id, img1, img2]
+    const consulta = "UPDATE productos SET img1= $2, img2=$3 WHERE id = $1"
+    const { rows, rowCount } = await pool.query(consulta, values);
+    if (!rowCount) throw { code: 404, msg: `No fue posible añadir las imagenes de tu producto, contacta al desarrollador del sitio.` };
+    return rows
+}
+
 export{
     crearUsuario,
     buscarUsuarioPorEmail,
@@ -112,5 +120,6 @@ export{
     nuevaCategoria,
     categoriaPorNombre,
     buscarFavoritos,
-    nuevoFavorito
+    nuevoFavorito,
+    cargarImagenesProducto
 }

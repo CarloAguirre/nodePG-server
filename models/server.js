@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
+import fileUpload from 'express-fileupload';
 import { router as productos } from "../routes/productos.js";
 import { router as usuarios } from "../routes/usuarios.js";
 import { router as auth } from "../routes/auth-login.js";
 import { router as categorias } from "../routes/categorias.js";
 import { router as favoritos} from "../routes/favoritos.js";
+import { router as uploads} from "../routes/uploads.js";
 
 class Server {
     constructor(){
@@ -16,6 +18,7 @@ class Server {
         this.authPath  = '/api/auth'
         this.categoriasPath  = '/api/categorias'
         this.favoritosPath  = '/api/favoritos'
+        this.uploadsPath  = '/api/uploads'
 
         this.middlewares();
         this.routes();
@@ -23,7 +26,14 @@ class Server {
 
     middlewares(){
         this.app.use(express.json())
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use(cors())
+        this.app.use(fileUpload({
+            // limits: { fileSize: 50 * 1024 * 1024 },
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
+            createParentPath: true
+        }));
     }
 
     listen(){
@@ -38,6 +48,7 @@ class Server {
         this.app.use(this.authPath, auth)
         this.app.use(this.categoriasPath, categorias)
         this.app.use(this.favoritosPath, favoritos)
+        this.app.use(this.uploadsPath, uploads)
     }
     
 }
