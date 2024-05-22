@@ -22,6 +22,7 @@ class Server {
 
         this.middlewares();
         this.routes();
+        this.startDataFetch();
     }
 
     middlewares(){
@@ -50,6 +51,22 @@ class Server {
         this.app.use(this.favoritosPath, favoritos)
         this.app.use(this.uploadsPath, uploads)
     }
+
+    async dataFetch() {
+        const urlServer = process.env.VITE_REACT_APP_APIURL;
+        try {
+            const response = await fetch(`${urlServer}/api/productos`);
+            const data = await response.json();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    startDataFetch() {
+        this.dataFetch(); // Ejecuta inmediatamente al iniciar el servidor
+        setInterval(() => this.dataFetch(), 10 * 60 * 1000); // Cada 10 minutos
+    }
+
     
 }
 
